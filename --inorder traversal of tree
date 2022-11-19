@@ -32,6 +32,16 @@ class tree{
        }
        return lt;
     }
+        public int maxheight(tree s){
+        if(s==null){
+            return 0;
+        }
+        int lh=maxheight(s.lchild);
+        int rh=maxheight(s.rchild);
+        return 1+Math.max(lh,rh);
+
+    }
+    
 }
 public class newtree{
     public static void main(String [] args){
@@ -46,5 +56,6 @@ public class newtree{
 
         System.out.println(s.rchild.rchild.data);
         System.out.println(s.inorder(s));
+        s.maxheight(s);
     }
 }
