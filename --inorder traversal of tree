@@ -1,0 +1,50 @@
+import java.util.*;
+
+class tree{
+    int data;
+    tree lchild;
+    tree rchild;
+    public tree(int key){
+        data=key;
+    }
+    public List<Integer>inorder(tree node ){
+        Stack<tree>st1=new Stack<tree>();
+        Stack<tree> st2=new Stack<tree>();
+        List<Integer> lt=new ArrayList<>();
+        if(node== null){
+            return lt;
+        }
+        st1.push(node);
+        while(!st1.isEmpty()){
+            node =st1.pop();
+            st2.add(node);
+            if(node.lchild!=null){
+                st1.push(node.lchild);
+            }
+            if(node.rchild!=null){
+                st1.push(node.rchild);
+            }
+        }
+
+       while(!st2.isEmpty())
+       {
+           lt.add(st2.pop().data);
+       }
+       return lt;
+    }
+}
+public class newtree{
+    public static void main(String [] args){
+        System.out.println("hello world");
+        tree s=new tree(5);
+        s.lchild=new tree(10);
+        s.rchild=new tree(15);
+        s.lchild.lchild=new tree(20);
+        s.lchild.rchild=new tree(25);
+        s.rchild.lchild=new tree(30);
+        s.rchild.rchild=new tree(35);
+
+        System.out.println(s.rchild.rchild.data);
+        System.out.println(s.inorder(s));
+    }
+}
